@@ -1,0 +1,17 @@
+const express = require('express')
+const router = express.Router()
+const {validateBody, authenticate} = require("../../middlewares")
+
+const ctrl  = require("../../controllers/auth/auth")
+
+const {schemas} = require("../../models/users")
+
+router.post('/register', validateBody(schemas.registerSchema), ctrl.register)
+
+router.post('/login', validateBody(schemas.loginSchema), ctrl.login)
+
+router.get("/current", authenticate, ctrl.getCurrent)
+
+router.post("/logout", authenticate, ctrl.logout)
+
+module.exports = router; 
