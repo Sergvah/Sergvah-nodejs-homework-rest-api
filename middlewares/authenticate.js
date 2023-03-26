@@ -24,4 +24,4 @@ try {
     next(HttpError(401))
 }
 }
-module.exports = authenticate 
+module.exports = authenticate;
